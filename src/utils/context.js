@@ -5,18 +5,7 @@ import { v4 as uuid } from "uuid";
 export const storeContext = createContext();
 
 export const StoreContext = ({ children }) => {
-  const [recipesList, setRecipes] = useState(JSON.parse(localStorage.getItem("recipes")));
-
-  useEffect(() => {
-    const storedRecipes = JSON.parse(localStorage.getItem("recipes"));
-
-    if (storedRecipes.length > 0) {
-      setRecipes(storedRecipes);
-    }
-    else{
-        setRecipes(recipes)
-    }
-  }, []);
+  const [recipesList, setRecipes] = useState(JSON.parse(localStorage.getItem("recipes")) !== null ? JSON.parse(localStorage.getItem("recipes")) : recipes);
 
   useEffect(() => {
     localStorage.setItem("recipes", JSON.stringify(recipesList));
