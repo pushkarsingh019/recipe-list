@@ -25,6 +25,10 @@ export const StoreContext = ({ children }) => {
       };
       setRecipes([...recipesList, newRecipe]);
     },
+    deleteRecipe : id => {
+      const updatedList = [...recipesList].filter(recipe => recipe.id !== id);
+      setRecipes(updatedList);
+    }
   };
 
   return (
